@@ -1,0 +1,26 @@
+<!--node.wxml-->
+<view class="container">
+  <view class="node-list">
+    <checkbox-group bindchange="checkboxChange">
+      <block wx:for="{{categories}}">
+        <view class="node-item" hover-class='navigator-hover'>
+          <text class="node-title">{{item.name}}</text>
+          <checkbox 
+            checked="{{item.checked}}"
+            style='position:absolute; right:20px;'
+            color='black'
+            value='{{item.id}}'
+            />
+        </view>
+      </block>
+    </checkbox-group>
+  </view>
+
+  <button style='width:90%;margin-top:10px;background-color:black;'
+    type="primary" 
+    size="default" 
+    loading="{{loading}}" 
+    disabled="{{disabled}}" 
+    bindtap="selectCategory" 
+    hover-class="other-button-hover">确定</button>
+</view>

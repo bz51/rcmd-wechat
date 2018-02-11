@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="topic-main">
+  <block wx:for="{{articles}}" wx:for-item="oneDayArticles">
+      <block wx:for="{{oneDayArticles.articleList}}"  wx:for-item="article">
+        <view class="topic-item" index="{{index}}" id="{{article.title}}" catchtap="redictDetail">
+            <image class="member-avatar" src="../images/bk1.jpg" background-size="cover"></image>
+            <view class="topic-info">
+                <view class="topic-inner">
+                    <view class="topic-left">
+                        <view class="topic-title"><text style='font-size:14px;'>{{article.title}}</text></view>
+                        <view>
+                          <block wx:for="{{article.categorySet}}" wx:for-item="category">
+                            <text class="node-name">{{category.name}}</text>
+                            </block>
+                            <text class="member-nickname">{{article.author}}</text>
+                        </view>
+                    </view>
+                    <view class="reply-num" style='line-height:22rpx;margin-left:0rpx;'>{{article.views}}</view>
+                </view>
+            </view>
+        </view>
+      </block>
+    </block>
+  </view>
+
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+</view>
