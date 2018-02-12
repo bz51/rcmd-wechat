@@ -1,4 +1,6 @@
 <!--detail.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+
 <view class="container">
   <view class="topic-detail">
     <view class="topic-owner">
@@ -10,7 +12,8 @@
         <text class="topic-created">{{article.postTime}}</text>
     </view>
     <view class="topic-desc">
-        <text>{{article.content}}</text>
+        <!-- <text>{{article.content}}</text> -->
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
     </view>
   </view>
   
