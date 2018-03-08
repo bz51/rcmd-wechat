@@ -1,30 +1,69 @@
-<!--index.wxml-->
 <view class="container">
-  <view class="topic-main">
-  <block wx:for="{{articles}}" wx:for-item="oneDayArticles">
-      <block wx:for="{{oneDayArticles.articleList}}"  wx:for-item="article">
-        <view class="topic-item" index="{{index}}" id="{{article.title}}" catchtap="redictDetail">
-            <image class="member-avatar" src="../images/bk1.jpg" background-size="cover"></image>
-            <view class="topic-info">
-                <view class="topic-inner">
-                    <view class="topic-left">
-                        <view class="topic-title"><text style='font-size:14px;'>{{article.title}}</text></view>
-                        <view>
-                          <block wx:for="{{article.categorySet}}" wx:for-item="category">
-                            <text class="node-name">{{category.name}}</text>
-                            </block>
-                            <text class="member-nickname">{{article.author}}</text>
-                        </view>
-                    </view>
-                    <view class="reply-num" style='line-height:22rpx;margin-left:0rpx;'>{{article.views}}</view>
-                </view>
-            </view>
-        </view>
-      </block>
-    </block>
+  <!-- logo区域  -->
+  <view class="titleBar">
+    <view class='titleBar-left-right'>
+      <view catchtap="prePage" class='fa fa-arrow-left' hidden='{{preDate==""}}'></view>
+    </view>
+    <view class='titleBar-middle'>
+      <view style='font-size:30px;margin-top:-10px;'>{{curDate}}</view>
+      <view style='font-size:12px;margin-top:-55px;'>基于深度学习推荐算法</view>
+    </view>
+    <view class='titleBar-left-right'>
+      <view catchtap="nextPage" class='fa fa-arrow-right' hidden='{{nextDate==""}}'></view>
+    </view>
   </view>
+
+
+<!-- <block wx:for="{{articles}}" wx:for-item="oneDayArticles"> -->
+  <view class="topic-main">
+    <block wx:for="{{curArticles}}" wx:for-item="article">
+          <view class="topic-item" index="{{index}}" id="{{article.title}}" catchtap="redictDetail">
+              <view class="card-left">{{(index<9)?("0"+(index+1)):(index+1)}}</view>
+              <view class="topic-info">
+                  <view class="topic-inner">
+                      <view class="topic-left">
+                          <view class="topic-title"><text>{{article.title}}</text></view>
+                          <view>
+                            <block wx:for="{{article.categorySet}}" wx:for-item="category">
+                              <text class="node-name">{{category.name}}</text>
+                              </block>
+                              <text class="member-nickname">298 万浏览</text>
+                          </view>
+                      </view>
+                      <!-- <view class="reply-num" style='line-height:22rpx;margin-left:0rpx;'>{{article.views}}</view> -->
+                  </view>
+              </view>
+              <image class="member-avatar" src="{{article.picUrl}}" background-size="cover"></image>
+          </view>
+      </block>
+  </view>
+
+  <view class='pagination'>
+    <view class='pagination-left' hidden='{{preDate==""}}' catchtap="prePage">
+      <view class='fa fa-chevron-left' style='display:inline-block; margin-left:10px;font-weight:100;'></view>
+    {{preDate}}
+    </view>
+    <view class='pagination-right' hidden='{{nextDate==""}}' catchtap="nextPage">
+      {{nextDate}}
+      <view class='fa fa-chevron-right' style='display:inline-block; margin-right:10px;font-weight:100;'></view>
+    </view>
+  </view>
+
+
 
   <loading hidden="{{hidden}}">
     加载中...
   </loading>
+
+
+
+
 </view>
+
+
+
+
+
+
+
+

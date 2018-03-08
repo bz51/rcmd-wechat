@@ -1,1 +1,56 @@
-/* pages/index/index.wxss */
+.titleBar{
+  width: 100%;
+  background: linear-gradient(#FA575C, #FA7171); 
+  height: 250rpx;
+}
+
+.card-left{
+  width: 10px;
+  font-weight: bold;
+  color: #FA575C;
+  font-size: 20px;
+}
+
+.titleBar-middle{
+  display:inline-block;
+  height:100%;
+  vertical-align:top;
+  color:white;
+  text-align:center;
+  width:80%;
+  line-height:90px;
+}
+
+.titleBar-left-right{
+  display: inline-block;
+  width: 10%;
+  height: 100%;
+  color:white;
+  text-align:center;
+  font-size:25px;
+  line-height:90px;
+  vertical-align:top;
+}
+
+.pagination{
+  width: 100%;
+  margin-top:10px;
+  margin-bottom:10px;
+  font-weight: bold;
+}
+
+.pagination-left{
+  display:inline-block;
+  position:absolute;
+  left:0;
+  font-size:16px;
+  color:#FA575C;
+}
+
+.pagination-right{
+  display:inline-block;
+  position:absolute;
+  right:0;
+  font-size:16px;
+  color:#FA575C;
+}

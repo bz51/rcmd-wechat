@@ -42,8 +42,13 @@
     line-height: 1.4;
     word-wrap: break-word; 
     word-break: normal;
-    font-size:14px;
+    font-size:15px;
     color:#333;
+    font-weight:300;
+color:#3f3f3f;
+font-size:16px;
+line-height:28px;
+
 }
 
 .replies {
@@ -85,4 +90,13 @@
     word-wrap: break-word; 
     word-break: normal; 
     color:#999;
+}
+
+.title {
+  font-size: 22px;
+  color: #333;
+  margin-bottom:20px;
+  margin-top:20px;
+  font-weight: bold;
+  line-height: 1.1;
 }

@@ -4,13 +4,13 @@
 <view class="container">
   <view class="topic-detail">
     <view class="topic-owner">
-        <image class="owner-avatar" src="../images/bk1.jpg" id="" bindtap="showUserInfo"></image>
-        <view class="topic-title">{{article.title}}</view>
+        <!-- <image class="owner-avatar" src="../images/bk1.jpg" id="" bindtap="showUserInfo"></image> -->
+        <view class="title">{{article.title}}</view>
     </view>
-    <view class="topic-info">
+    <!-- <view class="topic-info">
         <text>{{article.author}}</text>
         <text class="topic-created">{{article.postTime}}</text>
-    </view>
+    </view> -->
     <view class="topic-desc">
         <!-- <text>{{article.content}}</text> -->
         <template is="wxParse" data="{{wxParseData:content.nodes}}"/>

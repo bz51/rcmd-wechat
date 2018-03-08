@@ -4,7 +4,12 @@ var Api = require('../../utils/api.js');
 Page({
   data: {
     articles: [],
-    hidden: false
+    hidden: false,
+    curArticles: [],
+    curIndex: 0,
+    preDate:"",
+    nextDate: "",
+    curDate: ""
   },
   onPullDownRefresh: function () {
     this.fetchData();
@@ -93,15 +98,25 @@ Page({
           var articles = [];
           for (var i = 0; i < dateKeys.length; i++) {
             articles.push({
-              'date': dateKeys[i],
+              'date': that.formatDate(parseInt(dateKeys[i])),
               'articleList': res.data.data[dateKeys[i]]
             });
           }
-          
+
+          function compare(val1, val2) {
+            return val2.date - val1.date;
+          };
+          articles.sort(compare);
+
+          that.data.articles = articles;
+          that.data.curArticles = articles[articles.length-1].articleList;
+          that.data.curDate = articles[articles.length - 1].date;
+          that.data.preDate = articles[articles.length - 2] == undefined ? undefined : articles[articles.length - 2].date;
+          that.data.nextDate = undefined;
+          that.data.curIndex = articles.length - 1;
+
           // TODO
-          that.setData({
-            articles: articles
-          });
+          that.setData(that.data);
           setTimeout(function () {
             that.setData({
               hidden: true
@@ -117,5 +132,33 @@ Page({
       }
     })
   },
+
+  formatDate: function (millis) {
+    var date = new Date(millis);
+    return date.getMonth() + 1 + '月' + date.getDate() + '日';
+  },
+
+
+  prePage: function () {
+    this.data.curIndex = this.data.curIndex-1;
+
+    this.data.curArticles = this.data.articles[this.data.curIndex].articleList;
+    this.data.curDate = this.data.articles[this.data.curIndex].date;
+    this.data.preDate = this.data.articles[this.data.curIndex - 1] == undefined ? "" : this.data.articles[this.data.curIndex - 1].date;
+    this.data.nextDate = this.data.articles[this.data.curIndex + 1] == undefined ? "" : this.data.articles[this.data.curIndex + 1].date;
+
+    this.setData(this.data);
+  },
+
+  nextPage: function () {
+    this.data.curIndex = this.data.curIndex + 1;
+
+    this.data.curArticles = this.data.articles[this.data.curIndex].articleList;
+    this.data.curDate = this.data.articles[this.data.curIndex].date;
+    this.data.preDate = this.data.articles[this.data.curIndex - 1] == undefined ? "" : this.data.articles[this.data.curIndex - 1].date;
+    this.data.nextDate = this.data.articles[this.data.curIndex + 1] == undefined ? "" : this.data.articles[this.data.curIndex + 1].date;
+
+    this.setData(this.data);
+  }
 
 })

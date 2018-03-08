@@ -11,29 +11,8 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "每日推荐",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": "true"
-  },
-  "tabBar": {
-    "color": "#000",
-    "selectedColor": "#56abe4",
-    "backgroundColor": "#fff",
-    "borderStyle": "white",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "文章",
-        "iconPath": "images/latest.png",
-        "selectedIconPath": "images/lastest_on.png"
-      },
-      {
-        "pagePath": "pages/my/my",
-        "text": "我的",
-        "iconPath": "images/hotest.png",
-        "selectedIconPath": "images/hotest_on.png"
-      }
-    ]
+    "navigationBarBackgroundColor": "#FA575C",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white"
   }
 }
